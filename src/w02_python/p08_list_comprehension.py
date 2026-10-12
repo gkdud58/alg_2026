@@ -54,6 +54,8 @@ print("-- lambda --")
 
 # lambda는 짧은 함수를 그 자리에서 만드는 문법입니다.
 # 아래 lambda number: number * number는 square 함수와 같은 일을 합니다.
+
+# [0914]함수가 있는 곳엔 map이 있다.
 lambda_squares = list(map(lambda number: number * number, numbers))
 print("lambda_squares:", lambda_squares)
 print()
