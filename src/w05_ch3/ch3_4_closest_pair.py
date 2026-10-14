@@ -18,11 +18,13 @@ def distance(first, second):
 
 
 def brute_force(cities, left, right):
-    """cities[left..right]의 최근접 쌍을 (index, index, 거리)로 반환한다.
-
+    """cities[left..right]의 최근접 쌍을 (index, index, 거리)로 반환한다. 
+    # ..은 모두(왼쪽, 오른쪽) 포함한다.
+    # ..< ㅇ.거 -- 왼쪽만 포함
     left와 right를 모두 포함하며, 도시가 두 개 미만이면 None을 반환한다.
     """
-    best = None
+    best = None # 비어있는 변수를 위해서
+
     # i는 첫 도시, j는 그 뒤의 도시입니다. 같은 도시끼리 비교하지 않고,
     # (i, j)를 비교한 뒤 (j, i)를 다시 비교하지 않아 각 쌍을 한 번만 봅니다.
     for i in range(left, right):
@@ -112,6 +114,9 @@ def closest_pair_range(cities, left, right, y_order):
         # 이 버전은 최초 y정렬 O(n log n) 이후, 각 구간에서 index 분배와
         # strip 수집 및 탐색을 O(n)에 수행합니다. T(n)=2T(n/2)+O(n)이므로
         # 전체 최악 시간복잡도는 O(n log n)입니다(시각화 연출 제외).
+
+        # 내용을 잘 섞는 sort
+        # 내용을 머서기 sorted
         vis.set_strip(strip, split_x, d)
         for p in range(len(strip)):
             i = strip[p]
@@ -179,3 +184,6 @@ if __name__ == "__main__":
             print(f"최근접 쌍: {cities[first].name} - {cities[second].name}, 거리: {d:.3f}")
             vis.finish()
         vis.wait()
+
+# 스트립안에 좌표는 그 네모 스트립끼리만 거리 계산을 함
+# 다른 스트립도 끼리끼리 함
